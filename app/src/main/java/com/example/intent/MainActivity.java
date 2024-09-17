@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.intent.Modelo.UserModel;
+import com.example.intent.Modelo.UserManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,10 +41,9 @@ public class MainActivity extends AppCompatActivity {
         rb2 = findViewById(R.id.radioButton2);
         spin = findViewById(R.id.spinner);
         spin2 = findViewById(R.id.spinner2);
-        ArrayAdapter<String> adaptador = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, new String[]{
-                        "Casa", "Personal", "Trabajo", "Emergencia"
-                });
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{
+                "Casa", "Personal", "Trabajo", "Emergencia"
+        });
         spin.setAdapter(adaptador);
         spin2.setAdapter(adaptador);
     }
@@ -65,9 +65,12 @@ public class MainActivity extends AppCompatActivity {
 
         UserModel userModel = new UserModel(nombre, apellidos, email, telefono, tipoTelefono, tipoCorreo, sexo, aficiones);
 
+        UserManager.getInstance().addUser(userModel);
+
         Intent intent = new Intent(MainActivity.this, SegundaActivity.class);
         intent.putExtra("userModel", userModel);
         startActivity(intent);
     }
 }
+
 

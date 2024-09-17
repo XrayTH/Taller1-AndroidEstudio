@@ -3,6 +3,10 @@ package com.example.intent.Modelo;
 import java.io.Serializable;
 
 public class UserModel implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private static int nextId = 1;
+
+    private int id;
     private String nombre;
     private String apellidos;
     private String email;
@@ -13,6 +17,7 @@ public class UserModel implements Serializable {
     private String aficiones;
 
     public UserModel(String nombre, String apellidos, String email, String telefono, String tipoTelefono, String tipoCorreo, String sexo, String aficiones) {
+        this.id = nextId++;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
@@ -24,6 +29,8 @@ public class UserModel implements Serializable {
     }
 
     // Getters and setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }
     public String getApellidos() { return apellidos; }

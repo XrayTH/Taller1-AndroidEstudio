@@ -14,6 +14,12 @@
         android:onClick="enviarDatos"
         android:text="Enviar" />
 
+    <Button
+        android:id="@+id/ver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ver Usuarios" />
+
     <EditText
         android:id="@+id/editTextNombre"
         android:layout_width="match_parent"
