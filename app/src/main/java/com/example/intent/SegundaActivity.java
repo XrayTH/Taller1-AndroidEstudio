@@ -1,10 +1,13 @@
 package com.example.intent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.intent.Modelo.UserModel;
 
 public class SegundaActivity extends AppCompatActivity {
 
@@ -17,21 +20,23 @@ public class SegundaActivity extends AppCompatActivity {
 
         tDatos = findViewById(R.id.textViewDatos);
 
-        String[] datosUsuario = getIntent().getStringArrayExtra("datosUsuario");
-        String selecciones = getIntent().getStringExtra("Aficiones");
+        UserModel userModel = (UserModel) getIntent().getSerializableExtra("userModel");
 
-        StringBuilder sb = new StringBuilder();
-        sb.append("Nombre: ").append(datosUsuario[0]).append("\n");
-        sb.append("Apellidos: ").append(datosUsuario[1]).append("\n");
-        sb.append("Correo: ").append(datosUsuario[2]).append("\n");
-        sb.append("Teléfono: ").append(datosUsuario[3]).append("\n");
-        sb.append("Aficiones: ").append(selecciones).append("\n");
-        sb.append("Sexo: ").append(datosUsuario[4]).append("\n");
+        if (userModel != null) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("Nombre: ").append(userModel.getNombre()).append("\n");
+            sb.append("Apellidos: ").append(userModel.getApellidos()).append("\n");
+            sb.append("Correo: ").append(userModel.getEmail()).append("\n");
+            sb.append("Teléfono: ").append(userModel.getTelefono()).append("\n");
+            sb.append("Aficiones: ").append(userModel.getAficiones()).append("\n");
+            sb.append("Sexo: ").append(userModel.getSexo()).append("\n");
 
-        tDatos.setText(sb.toString());
+            tDatos.setText(sb.toString());
+        }
     }
 
     public void goHome(View view){
         finish();
     }
 }
+
