@@ -27,7 +27,9 @@ public class SegundaActivity extends AppCompatActivity {
             sb.append("Nombre: ").append(userModel.getNombre()).append("\n");
             sb.append("Apellidos: ").append(userModel.getApellidos()).append("\n");
             sb.append("Correo: ").append(userModel.getEmail()).append("\n");
+            sb.append("Tipo Correo: ").append(userModel.getTipoCorreo()).append("\n");
             sb.append("Teléfono: ").append(userModel.getTelefono()).append("\n");
+            sb.append("Tipo Teléfono: ").append(userModel.getTipoTelefono()).append("\n");
             sb.append("Aficiones: ").append(userModel.getAficiones()).append("\n");
             sb.append("Sexo: ").append(userModel.getSexo()).append("\n");
 

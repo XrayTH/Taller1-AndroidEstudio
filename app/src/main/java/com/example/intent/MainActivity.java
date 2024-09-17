@@ -21,14 +21,13 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextTelefono;
     private CheckBox cb1, cb2, cb3, cb4;
     private RadioButton rb1, rb2;
-    Spinner spin;
+    Spinner spin, spin2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializa las vistas
         editTextNombre = findViewById(R.id.editTextNombre);
         editTextApellidos = findViewById(R.id.editTextApellidos);
         editTextEmail = findViewById(R.id.editTextEmail);
@@ -40,12 +39,16 @@ public class MainActivity extends AppCompatActivity {
         rb1 = findViewById(R.id.radioButton);
         rb2 = findViewById(R.id.radioButton2);
         spin = findViewById(R.id.spinner);
-        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{"casa", "personal", "trabajo", "emergencia"});
+        spin2 = findViewById(R.id.spinner2);
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, new String[]{
+                        "Casa", "Personal", "Trabajo", "Emergencia"
+                });
         spin.setAdapter(adaptador);
+        spin2.setAdapter(adaptador);
     }
 
     public void enviarDatos(View view) {
-        // Recolecta los datos del formulario
         String aficiones = "";
         if (cb1.isChecked()) aficiones += "Música";
         if (cb2.isChecked()) aficiones += (aficiones.isEmpty() ? "" : ", ") + "Deporte";
@@ -57,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
         String apellidos = editTextApellidos.getText().toString();
         String email = editTextEmail.getText().toString();
         String telefono = editTextTelefono.getText().toString();
+        String tipoTelefono = spin.getSelectedItem().toString();
+        String tipoCorreo = spin2.getSelectedItem().toString();
 
-        // Crea una instancia de UserModel
-        UserModel userModel = new UserModel(nombre, apellidos, email, telefono, sexo, aficiones);
+        UserModel userModel = new UserModel(nombre, apellidos, email, telefono, tipoTelefono, tipoCorreo, sexo, aficiones);
 
-        // Pasa UserModel a SegundaActivity
         Intent intent = new Intent(MainActivity.this, SegundaActivity.class);
         intent.putExtra("userModel", userModel);
         startActivity(intent);
