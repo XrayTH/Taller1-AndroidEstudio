@@ -37,12 +37,24 @@ public class UsuariosActivity extends AppCompatActivity {
             String userDetails = "ID: " + user.getId() + "\n" +
                     "Nombre: " + user.getNombre() + "\n" +
                     "Apellidos: " + user.getApellidos() + "\n" +
+                    "Documento: " + user.getDocumento() + "\n" +
+                    "Edad: " + user.getEdad() + "\n" +
                     "Email: " + user.getEmail() + "\n" +
                     "Teléfono: " + user.getTelefono() + "\n" +
                     "Tipo Teléfono: " + user.getTipoTelefono() + "\n" +
                     "Tipo Correo: " + user.getTipoCorreo() + "\n" +
+                    "Dirección: " + user.getDireccion() + "\n" +
+                    "Fecha de Nacimiento: " + user.getFechaNacimiento() + "\n" +
+                    "Estado Civil: " + user.getEstadoCivil() + "\n" +
                     "Sexo: " + user.getSexo() + "\n" +
-                    "Aficiones: " + user.getAficiones() + "\n\n";
+                    "Videojuego Favorito: " + user.getVideojuegoFavorito() + "\n" +
+                    "Película Favorita: " + user.getPeliculaFavorita() + "\n" +
+                    "Color Favorito: " + user.getColorFavorito() + "\n" +
+                    "Comida Favorita: " + user.getComidaFavorita() + "\n" +
+                    "Libro Favorito: " + user.getLibroFavorito() + "\n" +
+                    "Canción Favorita: " + user.getCancionFavorita() + "\n" +
+                    "Aficiones: " + user.getAficiones() + "\n" +
+                    "Descripción Personal: " + user.getDescripcionPersonal() + "\n\n";
             userList.add(userDetails);
         }
 
@@ -57,6 +69,7 @@ public class UsuariosActivity extends AppCompatActivity {
         });
     }
 }
+
 
 
 

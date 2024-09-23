@@ -16,55 +16,104 @@ import com.example.intent.Modelo.UserManager;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText editTextNombre;
-    private EditText editTextApellidos;
-    private EditText editTextEmail;
-    private EditText editTextTelefono;
-    private CheckBox cb1, cb2, cb3, cb4;
-    private RadioButton rb1, rb2;
-    Spinner spin, spin2;
+    private EditText editTextNombre, editTextApellidos, editTextDocumento, editTextEdad, editTextEmail, editTextTelefono;
+    private EditText editTextDireccion, editTextFechaNacimiento, editTextPeliculaFavorita, editTextColorFavorito;
+    private EditText editTextComidaFavorita, editTextLibroFavorito, editTextCancionFavorita, editTextDescripcionPersonal;
+    private CheckBox checkBoxComida, checkBoxMusica, checkBoxDeporte, checkBoxCine, checkBoxVideojuegos, checkBoxViajes, checkBoxLibros;
+    private RadioButton radioButtonMasculino, radioButtonFemenino, radioButtonCasado, radioButtonSoltero;
+    private Spinner spinnerTipoTelefono, spinnerTipoCorreo, spinnerVideojuegoFavorito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Inicializar todos los elementos
         editTextNombre = findViewById(R.id.editTextNombre);
         editTextApellidos = findViewById(R.id.editTextApellidos);
+        editTextDocumento = findViewById(R.id.editTextDocumento);
+        editTextEdad = findViewById(R.id.editTextEdad);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextTelefono = findViewById(R.id.editTextTelefono);
-        cb1 = findViewById(R.id.checkBox1);
-        cb2 = findViewById(R.id.checkBox2);
-        cb3 = findViewById(R.id.checkBox3);
-        cb4 = findViewById(R.id.checkBox4);
-        rb1 = findViewById(R.id.radioButton);
-        rb2 = findViewById(R.id.radioButton2);
-        spin = findViewById(R.id.spinner);
-        spin2 = findViewById(R.id.spinner2);
+        editTextDireccion = findViewById(R.id.editTextDireccion);
+        editTextFechaNacimiento = findViewById(R.id.editTextDate);
+        editTextPeliculaFavorita = findViewById(R.id.editTextText3);
+        editTextColorFavorito = findViewById(R.id.editTextText4);
+        editTextComidaFavorita = findViewById(R.id.editTextText5);
+        editTextLibroFavorito = findViewById(R.id.editTextText6);
+        editTextCancionFavorita = findViewById(R.id.editTextText7);
+        editTextDescripcionPersonal = findViewById(R.id.editTextTextMultiLine);
+
+        checkBoxComida = findViewById(R.id.checkBox);
+        checkBoxMusica = findViewById(R.id.checkBox1);
+        checkBoxDeporte = findViewById(R.id.checkBox2);
+        checkBoxCine = findViewById(R.id.checkBox3);
+        checkBoxVideojuegos = findViewById(R.id.checkBox4);
+        checkBoxViajes = findViewById(R.id.checkBox5);
+        checkBoxLibros = findViewById(R.id.checkBox6);
+
+        radioButtonMasculino = findViewById(R.id.radioButton);
+        radioButtonFemenino = findViewById(R.id.radioButton2);
+        radioButtonCasado = findViewById(R.id.radioButton3);
+        radioButtonSoltero = findViewById(R.id.radioButton4);
+
+        spinnerTipoTelefono = findViewById(R.id.spinner);
+        spinnerTipoCorreo = findViewById(R.id.spinner2);
+        spinnerVideojuegoFavorito = findViewById(R.id.spinner3);
+
+        // Adaptadores para los spinners
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{
                 "Casa", "Personal", "Trabajo", "Emergencia"
         });
-        spin.setAdapter(adaptador);
-        spin2.setAdapter(adaptador);
+        spinnerTipoTelefono.setAdapter(adaptador);
+        spinnerTipoCorreo.setAdapter(adaptador);
+
+        ArrayAdapter<String> adaptadorVideojuegos = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{
+                "Sonic", "Megaman", "Castlevania", "GTA", "Skyrim", "Hollow Knight", "Mario", "Mortal Kombat", "League of Legends"
+        });
+        spinnerVideojuegoFavorito.setAdapter(adaptadorVideojuegos);
     }
 
     public void enviarDatos(View view) {
         String aficiones = "";
-        if (cb1.isChecked()) aficiones += "Música";
-        if (cb2.isChecked()) aficiones += (aficiones.isEmpty() ? "" : ", ") + "Deporte";
-        if (cb3.isChecked()) aficiones += (aficiones.isEmpty() ? "" : ", ") + "Cine";
-        if (cb4.isChecked()) aficiones += (aficiones.isEmpty() ? "" : ", ") + "Videojuegos";
+        if (checkBoxComida.isChecked()) aficiones += "Comida";
+        if (checkBoxMusica.isChecked()) aficiones += (aficiones.isEmpty() ? "" : ", ") + "Música";
+        if (checkBoxDeporte.isChecked()) aficiones += (aficiones.isEmpty() ? "" : ", ") + "Deporte";
+        if (checkBoxCine.isChecked()) aficiones += (aficiones.isEmpty() ? "" : ", ") + "Cine";
+        if (checkBoxVideojuegos.isChecked()) aficiones += (aficiones.isEmpty() ? "" : ", ") + "Videojuegos";
+        if (checkBoxViajes.isChecked()) aficiones += (aficiones.isEmpty() ? "" : ", ") + "Viajes";
+        if (checkBoxLibros.isChecked()) aficiones += (aficiones.isEmpty() ? "" : ", ") + "Libros";
 
-        String sexo = rb1.isChecked() ? "Masculino" : "Femenino";
+        String sexo = radioButtonMasculino.isChecked() ? "Masculino" : "Femenino";
+        String estadoCivil = radioButtonCasado.isChecked() ? "Casado" : "Soltero";
+
+        // Obtener datos de los campos de texto
         String nombre = editTextNombre.getText().toString();
         String apellidos = editTextApellidos.getText().toString();
+        String documento = editTextDocumento.getText().toString();
+        int edad = Integer.parseInt(editTextEdad.getText().toString());
         String email = editTextEmail.getText().toString();
         String telefono = editTextTelefono.getText().toString();
-        String tipoTelefono = spin.getSelectedItem().toString();
-        String tipoCorreo = spin2.getSelectedItem().toString();
+        String tipoTelefono = spinnerTipoTelefono.getSelectedItem().toString();
+        String tipoCorreo = spinnerTipoCorreo.getSelectedItem().toString();
+        String direccion = editTextDireccion.getText().toString();
+        String fechaNacimiento = editTextFechaNacimiento.getText().toString();
+        String videojuegoFavorito = spinnerVideojuegoFavorito.getSelectedItem().toString();
+        String peliculaFavorita = editTextPeliculaFavorita.getText().toString();
+        String colorFavorito = editTextColorFavorito.getText().toString();
+        String comidaFavorita = editTextComidaFavorita.getText().toString();
+        String libroFavorito = editTextLibroFavorito.getText().toString();
+        String cancionFavorita = editTextCancionFavorita.getText().toString();
+        String descripcionPersonal = editTextDescripcionPersonal.getText().toString();
 
-        UserModel userModel = new UserModel(nombre, apellidos, email, telefono, tipoTelefono, tipoCorreo, sexo, aficiones);
+        // Crear el objeto UserModel con todos los datos
+        UserModel userModel = new UserModel(
+                nombre, apellidos, documento, edad, email, telefono, tipoCorreo, tipoTelefono, direccion,
+                fechaNacimiento, estadoCivil, sexo, videojuegoFavorito, peliculaFavorita, colorFavorito,
+                comidaFavorita, libroFavorito, cancionFavorita, aficiones, descripcionPersonal
+        );
 
+        // Guardar el usuario en UserManager y pasar a la siguiente actividad
         UserManager.getInstance().addUser(userModel);
 
         Intent intent = new Intent(MainActivity.this, SegundaActivity.class);
@@ -77,5 +126,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 }
+
 
 
