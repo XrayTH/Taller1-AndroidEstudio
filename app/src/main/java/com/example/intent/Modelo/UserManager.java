@@ -1,13 +1,16 @@
 package com.example.intent.Modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserManager {
     private static UserManager instance;
-    private ArrayList<UserModel> userList;
+    private List<UserModel> users;
+    private int nextId;
 
     private UserManager() {
-        userList = new ArrayList<>();
+        users = new ArrayList<>();
+        nextId = 1;
     }
 
     public static UserManager getInstance() {
@@ -18,11 +21,13 @@ public class UserManager {
     }
 
     public void addUser(UserModel user) {
-        userList.add(user);
+        user.setId(nextId++);
+        users.add(user);
     }
 
-    public ArrayList<UserModel> getUserList() {
-        return userList;
+    public List<UserModel> getUsers() {
+        return users;
     }
 }
+
 

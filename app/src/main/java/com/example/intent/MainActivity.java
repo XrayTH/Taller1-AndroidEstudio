@@ -71,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("userModel", userModel);
         startActivity(intent);
     }
+
+    public void verUsuarios(View view) {
+        Intent intent = new Intent(MainActivity.this, UsuariosActivity.class);
+        startActivity(intent);
+    }
 }
 
 
