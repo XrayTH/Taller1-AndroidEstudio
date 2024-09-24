@@ -28,6 +28,17 @@ public class UserManager {
     public List<UserModel> getUsers() {
         return users;
     }
+
+    public UserModel getUserById(int id) {
+        for (UserModel user : users) {
+            // Comparamos el ID del usuario (que es int) con el ID ingresado
+            if (user.getId() == id) {
+                return user;
+            }
+        }
+        return null;  // Si no se encuentra el usuario
+    }
 }
+
 
 

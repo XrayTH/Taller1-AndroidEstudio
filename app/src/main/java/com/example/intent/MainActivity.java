@@ -125,6 +125,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, UsuariosActivity.class);
         startActivity(intent);
     }
+
+    public void abrirBuscar(View view) {
+        Intent intent = new Intent(MainActivity.this, ConsultarPorID.class);
+        startActivity(intent);
+    }
 }
 
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -26,19 +27,46 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/BuscarText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="Buscar ID"
+                    android:enabled="true" />
+
+                <Button
+                    android:id="@+id/buttonBuscar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="BuscarID"
+                    android:text="Buscar"
+                    android:enabled="true" />
+            </LinearLayout>
+
             <EditText
                 android:id="@+id/editTextNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:enabled="false" />
 
             <EditText
                 android:id="@+id/editTextApellidos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Apellidos"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:enabled="false" />
 
             <EditText
                 android:id="@+id/editTextDocumento"
@@ -46,7 +74,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Documento"
-                android:inputType="text" />
+                android:inputType="text"
+                android:enabled="false" />
 
             <EditText
                 android:id="@+id/editTextEdad"
@@ -54,39 +83,45 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Edad"
-                android:inputType="number" />
+                android:inputType="number"
+                android:enabled="false" />
 
             <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Correo electrónico"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:enabled="false" />
 
             <Spinner
                 android:id="@+id/spinner2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:enabled="false" />
 
             <EditText
                 android:id="@+id/editTextTelefono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Teléfono"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:enabled="false" />
 
             <Spinner
                 android:id="@+id/spinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:enabled="false" />
 
             <EditText
                 android:id="@+id/editTextDireccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Direccion"
-                android:inputType="text" />
+                android:hint="Dirección"
+                android:inputType="text"
+                android:enabled="false" />
 
             <EditText
                 android:id="@+id/editTextDate"
@@ -94,59 +129,67 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Fecha nacimiento (dd/mm/yyyy)"
-                android:inputType="date" />
+                android:inputType="date"
+                android:enabled="false" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="¿Cuales son tus aficiones?" />
+                android:text="¿Cuáles son tus aficiones?" />
 
             <CheckBox
                 android:id="@+id/checkBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Comida" />
+                android:text="Comida"
+                android:enabled="false" />
 
             <CheckBox
                 android:id="@+id/checkBox1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Música" />
+                android:text="Música"
+                android:enabled="false" />
 
             <CheckBox
                 android:id="@+id/checkBox2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Deporte" />
+                android:text="Deporte"
+                android:enabled="false" />
 
             <CheckBox
                 android:id="@+id/checkBox3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cine" />
+                android:text="Cine"
+                android:enabled="false" />
 
             <CheckBox
                 android:id="@+id/checkBox4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Videojuegos" />
+                android:text="Videojuegos"
+                android:enabled="false" />
 
             <CheckBox
                 android:id="@+id/checkBox5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Viajes" />
+                android:text="Viajes"
+                android:enabled="false" />
 
             <CheckBox
                 android:id="@+id/checkBox6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Libros" />
+                android:text="Libros"
+                android:enabled="false" />
 
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textView4"
@@ -158,14 +201,15 @@
                     android:id="@+id/radioButton3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Casado" />
+                    android:text="Casado"
+                    android:enabled="false" />
 
                 <RadioButton
                     android:id="@+id/radioButton4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Soltero" />
-
+                    android:text="Soltero"
+                    android:enabled="false" />
             </RadioGroup>
 
             <RadioGroup
@@ -176,20 +220,21 @@
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="¿Cual es tu sexo?" />
+                    android:text="¿Cuál es tu sexo?" />
 
                 <RadioButton
                     android:id="@+id/radioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Masculino" />
+                    android:text="Masculino"
+                    android:enabled="false" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="match_parent"
                     android:layout_height="54dp"
-                    android:text="Femenino" />
-
+                    android:text="Femenino"
+                    android:enabled="false" />
             </RadioGroup>
 
             <TextView
@@ -201,15 +246,17 @@
             <Spinner
                 android:id="@+id/spinner3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:enabled="false" />
 
             <EditText
                 android:id="@+id/editTextText3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Pelicula Favorita"
-                android:inputType="text" />
+                android:hint="Película Favorita"
+                android:inputType="text"
+                android:enabled="false" />
 
             <EditText
                 android:id="@+id/editTextText4"
@@ -217,7 +264,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Color Favorito"
-                android:inputType="text" />
+                android:inputType="text"
+                android:enabled="false" />
 
             <EditText
                 android:id="@+id/editTextText5"
@@ -225,55 +273,44 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Comida Favorita"
-                android:inputType="text" />
+                android:inputType="text"
+                android:enabled="false" />
 
             <EditText
-                android:id="@+id/editTextText6"
+                android:id="@+id/editTextText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Libro Favorito"
-                android:inputType="text" />
+                android:inputType="text"
+                android:enabled="false" />
 
             <EditText
-                android:id="@+id/editTextText7"
+                android:id="@+id/editTextText8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="Cancion Favorita"
-                android:inputType="text" />
+                android:inputType="text"
+                android:enabled="false" />
 
             <EditText
-                android:id="@+id/editTextTextMultiLine"
+                android:id="@+id/editTextTextMultiLine2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="Descripcion Personal"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:enabled="false" />
 
             <Button
-                android:id="@+id/buttonEnviar"
+                android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:onClick="enviarDatos"
-                android:text="Enviar" />
-
-            <Button
-                android:id="@+id/ver"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="verUsuarios"
-                android:text="Ver Usuarios" />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="abrirBuscar"
-                android:text="Buscar Usuario" />
+                android:onClick="regresar"
+                android:text="Regresar" />
 
         </LinearLayout>
     </ScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
