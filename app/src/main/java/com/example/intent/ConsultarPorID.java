@@ -31,9 +31,8 @@ public class ConsultarPorID extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consultar_por_id); // Asegúrate de que sea el nombre correcto de tu archivo XML
+        setContentView(R.layout.activity_consultar_por_id);
 
-        // Inicializar EditTexts
         buscarText = findViewById(R.id.BuscarText);
         editTextNombre = findViewById(R.id.editTextNombre);
         editTextApellidos = findViewById(R.id.editTextApellidos);
@@ -66,11 +65,9 @@ public class ConsultarPorID extends AppCompatActivity {
         spinnerTipoCorreo = findViewById(R.id.spinner2);
         spinnerVideojuegoFavorito = findViewById(R.id.spinner3);
 
-        // Inicializar Botones
         buttonBuscar = findViewById(R.id.buttonBuscar);
         buttonRegresar = findViewById(R.id.button4);
 
-        // Adaptadores para los spinners
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{
                "", "Casa", "Personal", "Trabajo", "Emergencia"
         });
@@ -82,7 +79,6 @@ public class ConsultarPorID extends AppCompatActivity {
         });
         spinnerVideojuegoFavorito.setAdapter(adaptadorVideojuegos);
 
-        // Configurar ClickListeners
         buttonBuscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,7 +97,6 @@ public class ConsultarPorID extends AppCompatActivity {
     private void buscarID() {
         String idText = buscarText.getText().toString();
 
-        // Verificar si el ID ingresado es un número válido
         if (idText.isEmpty()) {
             Toast.makeText(this, "Por favor, ingresa un ID válido.", Toast.LENGTH_SHORT).show();
             return;
@@ -111,7 +106,6 @@ public class ConsultarPorID extends AppCompatActivity {
         UserModel user = UserManager.getInstance().getUserById(id);
 
         if (user != null) {
-            // Rellenar los campos con la información del usuario
             editTextNombre.setText(user.getNombre());
             editTextApellidos.setText(user.getApellidos());
             editTextDocumento.setText(user.getDocumento());
@@ -140,11 +134,9 @@ public class ConsultarPorID extends AppCompatActivity {
                 rb4.setChecked(true);
             }
 
-            // Mostrar aficiones seleccionadas
             String aficiones = user.getAficiones();
             String[] aficionesArray = aficiones.split(",");
 
-            // Reiniciar los checkboxes
             checkBoxComida.setChecked(false);
             checkBoxMusica.setChecked(false);
             checkBoxDeporte.setChecked(false);
@@ -153,7 +145,6 @@ public class ConsultarPorID extends AppCompatActivity {
             checkBoxViajes.setChecked(false);
             checkBoxLibros.setChecked(false);
 
-            // Marcar los checkboxes según las aficiones
             for (String aficion : aficionesArray) {
                 switch (aficion.trim()) {
                     case "Comida":
@@ -180,22 +171,18 @@ public class ConsultarPorID extends AppCompatActivity {
                 }
             }
 
-            // Asignar valores a los spinners
             ArrayAdapter<String> adaptadorTelefono = (ArrayAdapter<String>) spinnerTipoTelefono.getAdapter();
             ArrayAdapter<String> adaptadorCorreo = (ArrayAdapter<String>) spinnerTipoCorreo.getAdapter();
             ArrayAdapter<String> adaptadorVideojuegos = (ArrayAdapter<String>) spinnerVideojuegoFavorito.getAdapter();
 
-            // Establecer el valor del spinnerTipoTelefono
             int telefonoPosition = adaptadorTelefono.getPosition(user.getTipoTelefono());
-            spinnerTipoTelefono.setSelection(telefonoPosition != -1 ? telefonoPosition : 0); // Si no se encuentra, selecciona el primer elemento
+            spinnerTipoTelefono.setSelection(telefonoPosition != -1 ? telefonoPosition : 0);
 
-            // Establecer el valor del spinnerTipoCorreo
             int correoPosition = adaptadorCorreo.getPosition(user.getTipoCorreo());
-            spinnerTipoCorreo.setSelection(correoPosition != -1 ? correoPosition : 0); // Si no se encuentra, selecciona el primer elemento
+            spinnerTipoCorreo.setSelection(correoPosition != -1 ? correoPosition : 0);
 
-            // Establecer el valor del spinnerVideojuegoFavorito
             int videojuegoPosition = adaptadorVideojuegos.getPosition(user.getVideojuegoFavorito());
-            spinnerVideojuegoFavorito.setSelection(videojuegoPosition != -1 ? videojuegoPosition : 0); // Si no se encuentra, selecciona el primer elemento
+            spinnerVideojuegoFavorito.setSelection(videojuegoPosition != -1 ? videojuegoPosition : 0);
 
             Toast.makeText(this, "Usuario encontrado: " + user.getNombre(), Toast.LENGTH_SHORT).show();
         } else {

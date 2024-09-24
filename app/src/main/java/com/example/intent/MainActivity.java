@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializar todos los elementos
         editTextNombre = findViewById(R.id.editTextNombre);
         editTextApellidos = findViewById(R.id.editTextApellidos);
         editTextDocumento = findViewById(R.id.editTextDocumento);
@@ -61,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         spinnerTipoCorreo = findViewById(R.id.spinner2);
         spinnerVideojuegoFavorito = findViewById(R.id.spinner3);
 
-        // Adaptadores para los spinners
         ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[]{
                 "Casa", "Personal", "Trabajo", "Emergencia"
         });
@@ -87,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
         String sexo = radioButtonMasculino.isChecked() ? "Masculino" : "Femenino";
         String estadoCivil = radioButtonCasado.isChecked() ? "Casado" : "Soltero";
 
-        // Obtener datos de los campos de texto
         String nombre = editTextNombre.getText().toString();
         String apellidos = editTextApellidos.getText().toString();
         String documento = editTextDocumento.getText().toString();
@@ -113,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 comidaFavorita, libroFavorito, cancionFavorita, aficiones, descripcionPersonal
         );
 
-        // Guardar el usuario en UserManager y pasar a la siguiente actividad
         UserManager.getInstance().addUser(userModel);
 
         Intent intent = new Intent(MainActivity.this, SegundaActivity.class);
@@ -128,6 +124,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void abrirBuscar(View view) {
         Intent intent = new Intent(MainActivity.this, ConsultarPorID.class);
+        startActivity(intent);
+    }
+
+    public void abrirEditar(View view) {
+        Intent intent = new Intent(MainActivity.this, Editar.class);
+        startActivity(intent);
+    }
+
+    public void abrirCalculadora(View view) {
+        Intent intent = new Intent(MainActivity.this, ActivityCalculadora.class);
         startActivity(intent);
     }
 }

@@ -274,6 +274,20 @@
                 android:onClick="abrirBuscar"
                 android:text="Buscar Usuario" />
 
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="abrirEditar"
+                android:text="Editar Usuario" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="abrirCalculadora"
+                android:text="Calculadora" />
+
         </LinearLayout>
     </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

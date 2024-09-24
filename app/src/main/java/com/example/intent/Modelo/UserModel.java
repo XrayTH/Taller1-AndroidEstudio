@@ -28,7 +28,6 @@ public class UserModel implements Serializable {
     private String aficiones;
     private String descripcionPersonal;
 
-    // Constructor que incluye todos los campos
     public UserModel(String nombre, String apellidos, String documento, int edad, String email, String telefono, String tipoCorreo,
                      String tipoTelefono, String direccion, String fechaNacimiento, String estadoCivil, String sexo,
                      String videojuegoFavorito, String peliculaFavorita, String colorFavorito, String comidaFavorita,
@@ -56,7 +55,6 @@ public class UserModel implements Serializable {
         this.descripcionPersonal = descripcionPersonal;
     }
 
-    // Getters y setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
