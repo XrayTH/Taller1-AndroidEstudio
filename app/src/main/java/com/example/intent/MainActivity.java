@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 comidaFavorita, libroFavorito, cancionFavorita, aficiones, descripcionPersonal
         );
 
-        UserManager.getInstance().addUser(userModel);
+        UserManager.getInstance(this).addUser(userModel);
 
         Intent intent = new Intent(MainActivity.this, SegundaActivity.class);
         intent.putExtra("userModel", userModel);

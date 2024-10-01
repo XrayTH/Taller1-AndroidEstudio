@@ -103,7 +103,7 @@ public class ConsultarPorID extends AppCompatActivity {
         }
 
         int id = Integer.parseInt(idText);
-        UserModel user = UserManager.getInstance().getUserById(id);
+        UserModel user = UserManager.getInstance(this).getUserById(id);
 
         if (user != null) {
             editTextNombre.setText(user.getNombre());

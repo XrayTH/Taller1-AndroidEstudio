@@ -29,7 +29,7 @@ public class UsuariosActivity extends AppCompatActivity {
         listViewUsuarios = findViewById(R.id.listViewUsuarios);
         buttonRegresar = findViewById(R.id.buttonRegresar);
 
-        UserManager userManager = UserManager.getInstance();
+        UserManager userManager = UserManager.getInstance(this);
         List<UserModel> users = userManager.getUsers();
 
         userList = new ArrayList<>();

@@ -111,7 +111,7 @@ public class Editar extends AppCompatActivity {
         }
 
         int id = Integer.parseInt(idText);
-        UserModel user = UserManager.getInstance().getUserById(id);
+        UserModel user = UserManager.getInstance(this).getUserById(id);
 
         if (user != null) {
             editTextNombre.setText(user.getNombre());
@@ -210,7 +210,7 @@ public class Editar extends AppCompatActivity {
         }
 
         int id = Integer.parseInt(idText);
-        UserModel user = UserManager.getInstance().getUserById(id);
+        UserModel user = UserManager.getInstance(this).getUserById(id);
 
         if (user != null) {
             user.setNombre(editTextNombre.getText().toString());
