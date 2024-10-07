@@ -49,34 +49,25 @@ public class UserManager {
         return null;
     }
 
-    public boolean updateUserById(int id, UserModel updatedUser) {
-        UserModel user = getUserById(id);
-        if (user != null) {
-            user.setNombre(updatedUser.getNombre());
-            user.setApellidos(updatedUser.getApellidos());
-            user.setDocumento(updatedUser.getDocumento());
-            user.setEdad(updatedUser.getEdad());
-            user.setEmail(updatedUser.getEmail());
-            user.setTelefono(updatedUser.getTelefono());
-            user.setTipoCorreo(updatedUser.getTipoCorreo());
-            user.setTipoTelefono(updatedUser.getTipoTelefono());
-            user.setDireccion(updatedUser.getDireccion());
-            user.setFechaNacimiento(updatedUser.getFechaNacimiento());
-            user.setEstadoCivil(updatedUser.getEstadoCivil());
-            user.setSexo(updatedUser.getSexo());
-            user.setVideojuegoFavorito(updatedUser.getVideojuegoFavorito());
-            user.setPeliculaFavorita(updatedUser.getPeliculaFavorita());
-            user.setColorFavorito(updatedUser.getColorFavorito());
-            user.setComidaFavorita(updatedUser.getComidaFavorita());
-            user.setLibroFavorito(updatedUser.getLibroFavorito());
-            user.setCancionFavorita(updatedUser.getCancionFavorita());
-            user.setAficiones(updatedUser.getAficiones());
-            user.setDescripcionPersonal(updatedUser.getDescripcionPersonal());
-            saveUsersToFile();
-            Toast.makeText(context, "Usuario actualizado", Toast.LENGTH_SHORT).show();
-            return true;
+    public void updateUser(UserModel userToUpdate) {
+        List<UserModel> users = getUsers(); // Obtener todos los usuarios
+        boolean userFound = false;
+
+        // Iterar sobre la lista para encontrar el usuario por ID
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getId() == userToUpdate.getId()) {
+                users.set(i, userToUpdate); // Si el usuario existe, actualizarlo
+                userFound = true;
+                break;
+            }
         }
-        return false;
+
+        if (userFound) {
+            saveUsersToFile(users); // Sobrescribir el archivo con la lista actualizada
+            Toast.makeText(context, "Usuario actualizado", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Usuario no encontrado", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void saveUserToFile(UserModel user) {
@@ -88,8 +79,7 @@ public class UserManager {
         }
     }
 
-    private void saveUsersToFile() {
-        List<UserModel> users = getUsers();
+    private void saveUsersToFile(List<UserModel> users) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(getFile()))) {
             for (UserModel user : users) {
                 writer.write(userToString(user));

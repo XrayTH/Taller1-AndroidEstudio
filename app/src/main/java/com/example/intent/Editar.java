@@ -250,6 +250,8 @@ public class Editar extends AppCompatActivity {
             user.setTipoCorreo(spinnerTipoCorreo.getSelectedItem().toString());
             user.setVideojuegoFavorito(spinnerVideojuegoFavorito.getSelectedItem().toString());
 
+            UserManager.getInstance(this).updateUser(user);
+
             Toast.makeText(this, "Información guardada exitosamente.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "No se puede guardar, usuario no encontrado.", Toast.LENGTH_SHORT).show();
