@@ -126,17 +126,17 @@ public class UserManager {
     }
 
     private String userToString(UserModel user) {
-        return user.getId() + "," + user.getNombre() + "," + user.getApellidos() + "," +
-                user.getDocumento() + "," + user.getEdad() + "," + user.getEmail() + "," +
-                user.getTelefono() + "," + user.getTipoCorreo() + "," + user.getTipoTelefono() + "," +
-                user.getDireccion() + "," + user.getFechaNacimiento() + "," + user.getEstadoCivil() + "," +
-                user.getSexo() + "," + user.getVideojuegoFavorito() + "," + user.getPeliculaFavorita() + "," +
-                user.getColorFavorito() + "," + user.getComidaFavorita() + "," + user.getLibroFavorito() + "," +
-                user.getCancionFavorita() + "," + user.getAficiones() + "," + user.getDescripcionPersonal();
+        return user.getId() + ";" + user.getNombre() + ";" + user.getApellidos() + ";" +
+                user.getDocumento() + ";" + user.getEdad() + ";" + user.getEmail() + ";" +
+                user.getTelefono() + ";" + user.getTipoCorreo() + ";" + user.getTipoTelefono() + ";" +
+                user.getDireccion() + ";" + user.getFechaNacimiento() + ";" + user.getEstadoCivil() + ";" +
+                user.getSexo() + ";" + user.getVideojuegoFavorito() + ";" + user.getPeliculaFavorita() + ";" +
+                user.getColorFavorito() + ";" + user.getComidaFavorita() + ";" + user.getLibroFavorito() + ";" +
+                user.getCancionFavorita() + ";" + user.getAficiones() + ";" + user.getDescripcionPersonal();
     }
 
     private UserModel stringToUser(String userString) {
-        String[] parts = userString.split(",");
+        String[] parts = userString.split(";");
         UserModel user = new UserModel(parts[1], parts[2], parts[3], Integer.parseInt(parts[4]), parts[5],
                 parts[6], parts[7], parts[8], parts[9], parts[10], parts[11], parts[12],
                 parts[13], parts[14], parts[15], parts[16], parts[17], parts[18], parts[19], parts[20]);
