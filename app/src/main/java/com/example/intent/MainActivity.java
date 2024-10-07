@@ -103,7 +103,6 @@ public class MainActivity extends AppCompatActivity {
         String cancionFavorita = editTextCancionFavorita.getText().toString();
         String descripcionPersonal = editTextDescripcionPersonal.getText().toString();
 
-        // Crear el objeto UserModel con todos los datos
         UserModel userModel = new UserModel(
                 nombre, apellidos, documento, edad, email, telefono, tipoCorreo, tipoTelefono, direccion,
                 fechaNacimiento, estadoCivil, sexo, videojuegoFavorito, peliculaFavorita, colorFavorito,

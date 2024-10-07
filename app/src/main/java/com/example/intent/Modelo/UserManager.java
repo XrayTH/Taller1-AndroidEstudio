@@ -19,8 +19,8 @@ public class UserManager {
 
     private UserManager(Context context) {
         this.context = context;
-        this.nextId = 1; // Inicializamos el nextId en 1
-        loadUsersFromFile(); // Cargamos usuarios al inicio
+        this.nextId = 1;
+        loadUsersFromFile();
     }
 
     public static UserManager getInstance(Context context) {
@@ -37,7 +37,7 @@ public class UserManager {
     }
 
     public List<UserModel> getUsers() {
-        return loadUsersFromFile(); // Devuelve la lista cargada
+        return loadUsersFromFile();
     }
 
     public UserModel getUserById(int id) {
@@ -72,7 +72,7 @@ public class UserManager {
             user.setCancionFavorita(updatedUser.getCancionFavorita());
             user.setAficiones(updatedUser.getAficiones());
             user.setDescripcionPersonal(updatedUser.getDescripcionPersonal());
-            saveUsersToFile();  // Guarda todos los usuarios nuevamente
+            saveUsersToFile();
             Toast.makeText(context, "Usuario actualizado", Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -109,13 +109,11 @@ public class UserManager {
                 while ((line = reader.readLine()) != null) {
                     UserModel user = stringToUser(line);
                     users.add(user);
-                    // Actualizamos el nextId si el ID del usuario actual es mayor
                     if (user.getId() >= nextId) {
-                        nextId = user.getId() + 1; // Asegúrate de que el siguiente ID sea uno más que el máximo
+                        nextId = user.getId() + 1;
                     }
                 }
             } catch (IOException e) {
-                // Si ocurre un error al leer el archivo, lo eliminamos
                 if (file.delete()) {
                     Toast.makeText(context, "Archivo corrupto eliminado", Toast.LENGTH_SHORT).show();
                 } else {
