@@ -115,11 +115,17 @@ public class UserManager {
                     }
                 }
             } catch (IOException e) {
-                Toast.makeText(context, "Error al cargar los usuarios", Toast.LENGTH_SHORT).show();
+                // Si ocurre un error al leer el archivo, lo eliminamos
+                if (file.delete()) {
+                    Toast.makeText(context, "Archivo corrupto eliminado", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Error al eliminar el archivo corrupto", Toast.LENGTH_SHORT).show();
+                }
             }
         }
         return users;
     }
+
 
     private File getFile() {
         return new File(context.getFilesDir(), "users.txt");
